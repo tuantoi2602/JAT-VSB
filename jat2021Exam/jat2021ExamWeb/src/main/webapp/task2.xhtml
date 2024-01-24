@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+		crossorigin="anonymous" />
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		crossorigin="anonymous"></script>
+
+	<title>JAT 2021 Exam - task 2</title>
+	<style type="text/css">
+</style>
+</h:head>
+<h:body>
+	<h2>JAT 2021 Exam - task 2</h2>
+	
+		<!-- TODO doplnit -->
+		<h:dataTable value="#{bikerController.allBikers}" var="p">
+			<h:column>
+				<f:facet name="header">ID</f:facet>
+				<h:outputText value="#{p.id}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">nickName</f:facet>
+				<h:outputText value="#{p.nickName}" />
+			</h:column>
+						<h:column>
+				<f:facet name="header">averageDayDistance</f:facet>
+				<h:outputText value="#{p.averageDayDistance}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">teenager</f:facet>
+				<h:outputText value="#{p.teenager}" />
+			</h:column>
+						<h:column>
+				<f:facet name="header">favouriteTrip</f:facet>
+				<h:outputText value="#{p.favouriteTrip}" />
+			</h:column>
+			<h:column>
+				<h:form>
+					<h:commandButton styleClass="btn btn-success" action="#{bikerController.edit(p)}" value="Edit" />
+				</h:form>
+				<h:form>
+					<h:commandButton action="#{bikerController.delete(p)}" value="Delete" />
+				</h:form>
+			</h:column>
+		</h:dataTable>
+				<h:form>
+					<h:commandButton action="#{bikerController.createNew()}" value="Create New" />
+				</h:form>
+	
+	<h:form>
+		<h:commandButton value="Reset" action="#{bikerController.reset()}"  styleClass="btn btn-danger"/>
+		<h:button outcome="index" value="Back"   styleClass="btn btn-secondary"/>
+	</h:form>
+</h:body>
+</html>
+

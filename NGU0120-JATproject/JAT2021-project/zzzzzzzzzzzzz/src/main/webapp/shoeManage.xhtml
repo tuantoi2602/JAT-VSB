@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<ui:composition template="templates.xhtml">
+	<ui:define name="title">Home</ui:define>
+	<ui:define name="content">
+		
+		<h:panelGroup rendered="#{customerController.adminLogin}">
+		<div class="shoeManage">
+		
+			<h:dataTable styleClass="table" value="#{shoeController.allShoes}" var="s">
+				<h:column>
+					<f:facet name="header">ID</f:facet>
+					<h:outputText value="#{s.id}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Name</f:facet>
+					<h:outputText value="#{s.name}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Price</f:facet>
+					<h:outputText value="#{s.price}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Brand</f:facet>
+					<h:outputText value="#{s.brand.name}" />
+				</h:column>
+				<h:column>
+					<h:form>
+						<h:commandButton styleClass="btn btn-success" action="#{shoeController.editShoe(s)}" value="Edit" />
+					</h:form>
+				</h:column>
+				
+				<h:column>
+					<h:form>
+						<h:commandButton styleClass="btn btn-info" action="#{shoeController.removeShoe(s)}" value="Remove" />
+					</h:form>
+				</h:column>
+			</h:dataTable>
+			<h:form>
+				<h:commandButton action="#{shoeController.newShoe()}" value="New Shoe" />
+			</h:form>
+		
+		</div>
+		
+		</h:panelGroup>
+		
+		
+	
+	</ui:define>
+
+
+</ui:composition>
+</html>
